@@ -1,6 +1,7 @@
 // import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
+// import Container from 'react-bootstrap';
 
 const Header = ({ nav }) => {
   return (
@@ -10,25 +11,25 @@ const Header = ({ nav }) => {
         <a href="">React menu</a>
         <Nav className="ms-auto">
           {nav.map((data, index) => {
-            if (data.classes[0] ===('fancyscroll')) {
+            if (data.menu_item_parent !==(1757) && data.ID !== (1757)) {
               return (
                 <a className='nav-link me-2' key={index} href={data.guid}>
                   {data.post_title}
                 </a>
               );
-            } else if (data.classes.includes('dropdown')) {
+            }
+            if(data.ID === (1757)) {
               return (
-                <NavDropdown className='dropdown-center' key={index} title={data.title}>
+                <NavDropdown className='dropdown-center' key={index} title={data.post_title}>
                   {nav
                     .map((subData, subIndex) => (
                       <NavDropdown.Item key={subIndex} href={subData.url}>
-                        {data.classes ===0 ? subData.title: null}
+                        {data.title}
                       </NavDropdown.Item>
                     ))}
                 </NavDropdown>
               );
             }
-            return null; // Ensure to have a return statement
           })}
         </Nav>
       </Navbar.Collapse>
