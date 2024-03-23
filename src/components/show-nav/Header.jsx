@@ -13,18 +13,18 @@ const Header = ({ nav }) => {
           {nav.map((data, index) => {
             if (data.menu_item_parent !==(1757) && data.ID !== (1757)) {
               return (
-                <a className='nav-link me-2' key={index} href={data.guid}>
-                  {data.post_title}
+                <a className='nav-link me-2' key={index} href={data.url}>
+                  {data.title}
                 </a>
               );
             }
-            if(data.ID === (1757)) {
+            if(data.ID === (1757) ||  data.menu_item_parent === '1757') {
               return (
-                <NavDropdown className='dropdown-center' key={index} title={data.post_title}>
+                <NavDropdown className='dropdown-center' key={index} title={data.title}>
                   {nav
                     .map((subData, subIndex) => (
                       <NavDropdown.Item key={subIndex} href={subData.url}>
-                        {data.title}
+                        {subData.title}
                       </NavDropdown.Item>
                     ))}
                 </NavDropdown>
